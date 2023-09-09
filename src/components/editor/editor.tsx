@@ -193,7 +193,7 @@ function Editor({ post }: EditorProps) {
         toast({
           title: 'Save failed',
           description: err.message,
-          variant: 'destructive',
+          variant: 'danger',
         });
       })
       .finally(() => {

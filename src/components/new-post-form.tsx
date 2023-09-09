@@ -65,7 +65,7 @@ function NewPostForm({}: Props) {
       })
       .catch((err) => {
         toast({
-          variant: 'destructive',
+          variant: 'danger',
           title: 'Create failed',
           description: err.message,
         });
