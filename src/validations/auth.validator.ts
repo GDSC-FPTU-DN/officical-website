@@ -17,6 +17,7 @@ export const RegisterSchema = z.object({
     .string()
     .regex(REGEX_PASSWORD, 'Password must contain at least 8 characters, one uppercase, one lowercase and one number'),
   role: z.nativeEnum(ROLE),
+  image: z.string().url().optional(),
 });
 
 export type LoginSchemaType = z.infer<typeof LoginSchema>;
