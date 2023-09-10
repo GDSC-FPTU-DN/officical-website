@@ -7,6 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 export const metadata: Metadata = {};
+export const metadata: Metadata = {};
 
 function MainLayout({ children }: Props) {
   return (

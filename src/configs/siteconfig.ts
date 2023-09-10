@@ -1,4 +1,4 @@
-import { env } from 'process';
+import { env } from '@env';
 import { NavItem } from '../types';
 
 export const siteConfig = {

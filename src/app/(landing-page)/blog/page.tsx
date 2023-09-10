@@ -41,6 +41,7 @@ async function BlogPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center space-y-4 container mx-auto">
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
         <NewsDisplayer
           className="col-span-2"
           header={{
