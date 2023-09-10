@@ -24,13 +24,12 @@ async function getPosts() {
   })
     .then(async (res) => {
       if (!res.ok) {
-        throw new Error('Error when fetching posts');
+        console.log('Error when fetching posts', res);
       }
       const data = await res.json();
       return data.data as (Post & { author: Pick<User, 'id' | 'name' | 'image'> })[];
     })
     .catch((e) => {
-      console.log('Error when fetching posts', e);
       return [];
     });
 
