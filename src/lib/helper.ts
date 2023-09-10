@@ -22,7 +22,7 @@ export function slugtify(text: string): string {
 
 export function generateOgImage(text: string, slot?: number): string {
   const _slot = slot || Math.floor(Math.random() * 10) + 1;
-  return `${siteConfig.url}og?title=${text}&slot=${_slot}`;
+  return `${siteConfig.url}/og?title=${text}&slot=${_slot}`;
 }
 
 export const estimateReadingTimeByWordCount = (wordCount: number) => {

@@ -1,7 +1,7 @@
 import { mainNav } from '@/configs/siteconfig';
 import { Icons } from '@components/icons';
 import MainNavbar from '@components/navbar';
-import { absoluteUrl } from '@lib/helper';
+import { absoluteUrl, generateOgImage } from '@lib/helper';
 import { Button } from '@nextui-org/button';
 import { Card, CardFooter } from '@nextui-org/card';
 import { Divider } from '@nextui-org/divider';
@@ -54,7 +54,11 @@ async function ProfileBlogs({}: Props) {
           {blogs?.map((blog) => {
             return (
               <Card key={blog.id} className="w-full" shadow="sm" isFooterBlurred>
-                <Image src={blog.ogImage || ''} alt={blog.title} className="aspect-video object-cover" />
+                <Image
+                  src={blog.ogImage || generateOgImage(blog.title)}
+                  alt={blog.title}
+                  className="aspect-video object-cover"
+                />
                 <CardFooter className="absolute border-1 bottom-1 z-10 ml-1 shadow-sm border-white/20 bg-white/20 rounded-full  w-[calc(100%_-_8px)] backdrop-blur-sm">
                   <Link href={`/blog/${blog.slug}`}>
                     <Button color="primary" isIconOnly variant="light">
