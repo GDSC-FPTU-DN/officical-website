@@ -11,10 +11,28 @@ export const metadata: Metadata = {
 };
 
 async function getPosts() {
-  const res = await fetch(absoluteUrl(`/api/blog`), {}).then(async (res) => {
-    const data = await res.json();
-    return data.data as (Post & { author: Pick<User, 'id' | 'name' | 'image'> })[];
+  const params = new URLSearchParams({
+    published: 'true',
   });
+  const url = absoluteUrl(`/api/blog?${params.toString()}`);
+  const res = await fetch(url, {
+    next: {
+      revalidate: 60,
+      tags: ['blog'],
+    },
+    method: 'GET',
+  })
+    .then(async (res) => {
+      if (!res.ok) {
+        throw new Error('Error when fetching posts');
+      }
+      const data = await res.json();
+      return data.data as (Post & { author: Pick<User, 'id' | 'name' | 'image'> })[];
+    })
+    .catch((e) => {
+      console.log('Error when fetching posts', e);
+      return [];
+    });
 
   return res;
 }
