@@ -1,3 +1,4 @@
+import { notFoundResponse, unAuthroizedResponse } from '@/app/api/api-helper';
 import { getSessionServerSide } from '@lib/auth';
 import { db } from '@lib/db';
 import { NextResponse } from 'next/server';
@@ -52,11 +53,10 @@ export async function PATCH(request: Request, { params }: { params: { slug: stri
     },
   });
 
-  if (!blog) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
+  if (!blog) return notFoundResponse({ message: 'Blog not found' });
+  if (!user) return unAuthroizedResponse;
   if (blog.authorId !== user.id && user.role !== 'ADMIN') {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return unAuthroizedResponse;
   }
 
   const body = await request.json();

@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
   });
 
   if (existingUser) {
-    return badRequestResponse('User already exists');
+    return badRequestResponse({
+      message: 'User already exists',
+    });
   }
 
   const salt = genSalt(DEFAULT_SALT_ROUNDS);
@@ -40,5 +42,7 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return createdResponse(newUser);
+  return createdResponse({
+    data: newUser,
+  });
 }
