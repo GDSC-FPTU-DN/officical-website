@@ -10,10 +10,10 @@ export const metadata: Metadata = {};
 
 function MainLayout({ children }: Props) {
   return (
-    <main className="min-h-screen">
+    <main className="h-full">
       <MainNavbar items={mainNav} />
 
-      <section className="">{children}</section>
+      <section className="h-full">{children}</section>
     </main>
   );
 }
