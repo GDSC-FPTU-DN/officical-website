@@ -52,12 +52,12 @@ async function BlogPage() {
           <div className="grid grid-cols-[40%_60%] gap-2">
             <div className="">
               {posts.map((post) => {
-                return <VericalBlogView key={post.slug} isWithDescription isWithImage blog={post} />;
+                return <VericalBlogView key={post.slug + 'vertical'} isWithDescription isWithImage blog={post} />;
               })}
             </div>
             <div className="">
               {posts.map((post) => {
-                return <HorizontalBlogView key={post.slug} blog={post} />;
+                return <HorizontalBlogView key={post.slug + 'horizontal'} blog={post} />;
               })}
             </div>
           </div>
@@ -72,7 +72,7 @@ async function BlogPage() {
             {posts.map((post) => {
               return (
                 <>
-                  <HorizontalBlogView key={post.slug} blog={post} isWithImage />
+                  <HorizontalBlogView key={post.slug + 'side-horizontal'} blog={post} isWithImage />
                   <Divider />
                 </>
               );
